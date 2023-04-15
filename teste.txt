@@ -1,2 +1,2 @@
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-help
+cor de fundo da logo: #11111f
+cor da logo: #f6be00
