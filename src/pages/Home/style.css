@@ -1,0 +1,32 @@
+.header {
+    background: #b0902c;
+    width: 100%;
+    position: fixed;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    height: 4rem; /*modificado de px(64px) para rem no cap "Aplicando estilos CSS no componente Home"*/
+    padding: 0 24px;
+    justify-content: space-between;
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    width: 100vw; /*modificado de px(1200px) para vw no cap "Aplicando estilos CSS no componente Home"*/
+    margin: 0 auto;
+}
+
+.navbar {
+    background: #d9d9d9;
+    width: 21rem; /*modificado de px(350px) para vw no cap "Aplicando estilos CSS no componente Home"*/
+    padding: 24px; 
+}
+
+.feed {
+     background: #f2f2f2;
+     width: 100%;
+     padding: 24px;
+}
