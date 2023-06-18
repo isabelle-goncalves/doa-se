@@ -10,14 +10,14 @@ Aplicação online para doação de qualquer coisa.
 [![License](https://img.shields.io/github/license/isabelle-goncalves/doa-se)](https://opensource.org/licenses/MIT)
 
 
-- [Suporte](#support)
+- [Suporte](#suporte)
 - [Obrigada](#Obrigada)
 - [Licença](#licença)
 
 
 ## Suporte
 
-- Vá para [Problemas](https://github.com/isabelle-goncalves/doa-se/issues) para suporte em problemas.
+- Vá para [Problemas](https://github.com/isabelle-goncalves/doa-se/issues) para maior suporte.
 
 
 ## Obrigada
