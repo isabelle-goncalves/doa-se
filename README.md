@@ -1,7 +1,8 @@
 # Doa-se
 
 
-Aplicação online para doação de qualquer coisa
+Aplicação online para doação de qualquer coisa. 
+
 [Demo](https://doa-se.vercel.app)
 
 [![License](https://img.shields.io/github/license/isabelle-goncalves/doa-se)](https://opensource.org/licenses/MIT)
