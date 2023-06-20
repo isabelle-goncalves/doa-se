@@ -215,7 +215,7 @@ const AccountProfile = (props) => {
                 color="textSecondary"
                 variant="body1"
               >
-                #reactjs, #dotnetcore, #webdev
+                #doacao, #antigo, #camera
               </Typography>
             </div>
           </div>
