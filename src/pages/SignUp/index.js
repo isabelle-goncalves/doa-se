@@ -11,12 +11,11 @@ import Link from '@material-ui/core/Link';
 import { useNavigate } from 'react-router-dom';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { useDispatch } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { Formik } from 'formik';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
+import { Helmet } from 'react-helmet';
 
-import  { signIn }  from '../../actions/accountActions';
-
+import { signUp } from '../../actions/accountActions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -76,7 +75,7 @@ function Copyright() {
     )
 }
 
-function SignIn() {
+function SignUp() {
     const classes = useStyles();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -84,14 +83,14 @@ function SignIn() {
     return (
         <Grid container className={classes.root}>
           <Helmet>
-            <title>Doa-se | Login</title>
+            <title>Doa-se | Registro</title>
           </Helmet>
             <Grid item container className={classes.left} md={7}>
                 <Typography style={{color:'#FFF', fontSize: 35, lineHeight: '45px'}}>
                     <strong>A nova plataforma para doações</strong>
                 </Typography>
                 <Typography variant="body2" style={{color: 'rgb(255,255,255, 0.7)', marginTop: 30, fontSize:15, lineHeight: '1.9rem',}}>
-                    Faça login agora mesmo!
+                    Registre-se agora 
                 </Typography>
             </Grid>
 
@@ -105,24 +104,30 @@ function SignIn() {
                     </Typography>
                     <Formik
             initialValues={{
+              fullName: '',
               email: '',
               password: '',
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string()
-                .email('Informe um email válido.')
+              fullName: Yup.string()
                 .max(255)
-                .required('Informe um email.'),
+                .required('Favor informar o nome completo'),
+              email: Yup.string()
+                .email('Favor informar um email válido')
+                .max(255)
+                .required('Favor informar o email'),
               password: Yup.string()
                 .max(255)
-                .required('Informe uma senha.'),
+                .required('Favor informar o password'),
             })}
             onSubmit={async (
               values,
               { setErrors, setStatus, setSubmitting },
             ) => {
               try {
-                await dispatch(signIn(values.email, values.password));
+                await dispatch(
+                  signUp(values.fullName, values.email, values.password),
+                );
                 navigate('/');
               } catch (error) {
                 const message =
@@ -137,6 +142,21 @@ function SignIn() {
           >
             {({ errors, handleChange, handleSubmit, isSubmitting, values }) => (
               <form noValidate className={classes.form} onSubmit={handleSubmit}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="fullName"
+                  label="Nome completo"
+                  name="fullName"
+                  autoComplete="fullName"
+                  autoFocus
+                  error={Boolean(errors.fullName)}
+                  value={values.fullName}
+                  onChange={handleChange}
+                  helperText={errors.fullName}
+                />
                 <TextField
                   variant="outlined"
                   margin="normal"
@@ -175,24 +195,19 @@ function SignIn() {
                   type="submit"
                   disbled={isSubmitting}
                 >
-                  Entrar
+                  Registrar
                 </Button>
                 {errors.submit && (
                   <FormHelperText error>{errors.submit}</FormHelperText>
                 )}
-                        
-                        <Grid container>
-                            <Grid item className={classes.link}>
-                                <Link>Esqueceu sua senha?</Link>
-                            </Grid>
-                            <Grid item className={classes.link2}>
-                            Não tem uma conta? <Link to="/registro">Crie sua conta</Link>
-                            </Grid>
-                        </Grid>
-                    </form>
-                        )
-                      }
-                    </Formik>
+                <Grid container>
+                  <Grid item>
+                    <Link to="/login" >Ja possui uma conta? Clique aqui</Link>
+                  </Grid>
+                </Grid>
+              </form>
+            )}
+          </Formik>
                     <Copyright />
                 </Box>
             </Grid>
@@ -200,4 +215,4 @@ function SignIn() {
     )
 }
 
-export default SignIn;
+export default SignUp;

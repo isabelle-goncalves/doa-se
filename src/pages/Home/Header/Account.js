@@ -7,7 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { signOut } from '../../../actions/accountActions';
 
+
 function Account() {
+
     const account = useSelector((state) => state.account);
     const [isOpen, setOpen] = useState(false);
     const ref = useRef();
@@ -46,9 +48,8 @@ function Account() {
                 onClose={handleClose}
                 getContentAnchorEl={null} 
             >
-                <MenuItem>Perfil</MenuItem>
-                <MenuItem>Meus Favoritos</MenuItem>
-                <MenuItem>Meus Posts</MenuItem>
+                <MenuItem onClick={() => navigate(`/${account.user?.username}`) } >Perfil</MenuItem>
+                <MenuItem onClick={() => navigate(`/${account.user?.username}`) } >Meus Posts</MenuItem>
                 <MenuItem>Mensagens</MenuItem>
                 <MenuItem onClick={handleSignOut}>Sair da conta</MenuItem>
             </Menu>
@@ -63,8 +64,8 @@ function Account() {
             onClose={handleClose}
             getContentAnchorEl={null} 
             >
-                <MenuItem>Registrar</MenuItem>
-                <MenuItem>Entrar</MenuItem>
+                <MenuItem onClick={() => navigate('/registro')}>Registrar</MenuItem>
+                <MenuItem onClick={() => navigate('/login')}>Entrar</MenuItem>
             </Menu>
             )        
         }

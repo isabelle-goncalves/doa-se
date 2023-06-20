@@ -19,8 +19,12 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     marginRight: theme.spacing(1),
   },
+  text: {
+    color: theme.palette.text.primary,
+  }
 
 }));
+
 
 function PostPreview() {
 
@@ -32,6 +36,19 @@ function PostPreview() {
 
   const account = useSelector(state => state.account);
 
+
+  const current = new Date();
+
+  const data = `${("0" + current.getDate()).slice(-2)}/${("0" + (current.getMonth() + 1)).slice(-2)}/${current.getFullYear()}`;
+
+  const horas = current.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+
+  
   return (
     <>
   
@@ -42,18 +59,18 @@ function PostPreview() {
         </Box>
                 
         <Box> 
-          <Typography variant="body1">{account.user?.name}</Typography>
-          <Typography variant="body2" color="textSecondary" >10 meses atrás</Typography>
+          <Typography variant="body1" color="textPrimary">{account.user?.name}</Typography>
+          <Typography variant="body2" color="textSecondary" >No dia {data}, as {horas}</Typography>
         </Box>
             
       </Box>
 
       <Box mb={2}>
-        <Typography variant="h2">{title}</Typography>
+        <Typography variant="h2" color="textPrimary">{title}</Typography>
       </Box>
 
       <Box mb={2}>
-        <Typography variant="body1">
+        <Typography variant="body1" color="textPrimary">
           {tags?.map(item => item.title).join(', ')}
         </Typography>
       </Box>
@@ -70,7 +87,7 @@ function PostPreview() {
 
       <Divider />
 
-      <Markdown source={markdownText}></Markdown>
+      <Markdown className={classes.text}source={markdownText}></Markdown>
 
     </>
   )

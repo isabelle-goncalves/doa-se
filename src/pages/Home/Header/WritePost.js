@@ -3,25 +3,27 @@ import Button from '@material-ui/core/Button';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
-function WritePost() {
+  function WritePost() {
+
     const navigate = useNavigate();
     const account = useSelector(state => state.account);
     const isAuthenticated = !!account.user;
 
     const handleClick = () => {
        if (isAuthenticated) {
-         navigate('/post/new');
+         navigate('/post/novo-post');
        }
        else {
-         navigate('/sign-in')
+         navigate('/login')
        }
     }
 
     return (
         <Button 
             onClick={handleClick}
-            variant="contained" 
-            color="primary"
+            variant="contained"
+            color="primary" 
+            
         >
             Novo Post
         </Button>

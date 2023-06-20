@@ -2,11 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box';
+import { Link } from 'react-router-dom';
 
 import WritePost from './WritePost';
 import Notifications from './Notifications';
 import Account from './Account';
+import Settings from './Settings';
 
 
 const useStyles = makeStyles({
@@ -38,8 +40,9 @@ function Header() {
     return (
         <AppBar className={classes.appbar}>
             <Toolbar>
+              <Link to="/">
                 <img src="/images/logo-sem-fundo-mini.png" alt="logo" className={classes.logo} />
-
+              </Link>
                 <div className={classes.grow} />
                 
                 <div className={classes.userSection}>
@@ -48,6 +51,10 @@ function Header() {
 
                     <Box ml={2}>
                         <Notifications />
+                    </Box>
+                    
+                    <Box ml={2}>
+                      <Settings />
                     </Box>
                     
                     <Box ml={2}>
