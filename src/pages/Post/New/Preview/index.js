@@ -52,11 +52,11 @@ function PostPreview() {
   return (
     <>
   
-      <Box display="flex" alignItems="center" mb={2}>
-
       <Box mb={2}>
         <Typography variant="h2" color="textPrimary">{title}</Typography>
       </Box>
+      
+      <Box display="flex" alignItems="center" mb={2}>
 
         <Box>
           <Avatar className={classes.avatar} src={account.user?.avatar} />
@@ -68,7 +68,7 @@ function PostPreview() {
         </Box>
             
       </Box>
-      
+
       <Markdown className={classes.text}source={markdownText}></Markdown>
 
       <Box mb={2}>
