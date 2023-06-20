@@ -178,7 +178,7 @@ function SignIn() {
                   Entrar
                 </Button>
                 {errors.submit && (
-                  <FormHelperText error>{errors.submit}</FormHelperText>
+                  <FormHelperText error className={classes.errorMessage}>{errors.submit}</FormHelperText>
                 )}
                         
                         <Grid container>
